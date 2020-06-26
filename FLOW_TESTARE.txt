@@ -1,0 +1,31 @@
+BLACK BOX TESTING:
+
+1. Intai testam functionalitatile pe rand (testare unitara), folosindu-ne de alte functionalitati pentru a verifica   corectitudinea:
+
+Vizualizare - testam vizualizarea tuturor evenimentelor (GET /events) pentru a vedea evenimentele disponibile
+ 	    
+	    - apoi testam vizualizarea unui singur event existent (GET /events/:id) si verificam ca
+	      rezultatul corespunde event-ului asteptat
+
+Creare - creare event si apoi vizualizare pentru verificare (presupunand ca vizualizarea este verificata deja)
+
+Stergere - stergere un event (DELETE /events/:id_del) si apoi GET /events/:id_del ca sa verificam ca nu mai exista
+
+Update - update event (PUT /events/:id) si apoi vizualizare event pentru a vedea modificarile
+
+
+2. Apoi testam functionalitatile si pentru edge cases, sa verificam daca se comporta corect:
+
+Vizualizare - testam vizualizarea unui singur event inexistent + verificare ca sistemul a ramas la fel
+
+Stergere - stergere un event care nu exista + verificare ca sistemul a ramas la fel
+
+Update - update event care nu exista + verificare ca sistemul a ramas la fel
+
+
+3. Apoi testam diferite flow-uri (combinatii de functionalitati)
+
+ - creare -> stergere -> vizualizare
+
+ - update -> stergere -> vizualizare
+
