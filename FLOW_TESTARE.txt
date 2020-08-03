@@ -1,31 +1,30 @@
-BLACK BOX TESTING:
+BLACK BOX TESTING PLAN for REST API:
 
-1. Intai testam functionalitatile pe rand (testare unitara), folosindu-ne de alte functionalitati pentru a verifica   corectitudinea:
+1. Unit testing
 
-Vizualizare - testam vizualizarea tuturor evenimentelor (GET /events) pentru a vedea evenimentele disponibile
- 	    
-	    - apoi testam vizualizarea unui singur event existent (GET /events/:id) si verificam ca
-	      rezultatul corespunde event-ului asteptat
+- GET request for all events
 
-Creare - creare event si apoi vizualizare pentru verificare (presupunand ca vizualizarea este verificata deja)
+- GET request for specific event and check result exists in previous response
 
-Stergere - stergere un event (DELETE /events/:id_del) si apoi GET /events/:id_del ca sa verificam ca nu mai exista
+- POST event & then GET on posted event to check
 
-Update - update event (PUT /events/:id) si apoi vizualizare event pentru a vedea modificarile
+- DELETE event & then GET deleted event, check response is empty
 
-
-2. Apoi testam functionalitatile si pentru edge cases, sa verificam daca se comporta corect:
-
-Vizualizare - testam vizualizarea unui singur event inexistent + verificare ca sistemul a ramas la fel
-
-Stergere - stergere un event care nu exista + verificare ca sistemul a ramas la fel
-
-Update - update event care nu exista + verificare ca sistemul a ramas la fel
+- PUT event & then GET event, check event is updated
 
 
-3. Apoi testam diferite flow-uri (combinatii de functionalitati)
+2. Edge cases
 
- - creare -> stergere -> vizualizare
+- GET non-existent event, check system remains the same
 
- - update -> stergere -> vizualizare
+- DELETE non-existent event, check system remains the same
+
+- UPDATE non-existent event, check system remains the same
+
+
+3. Flows
+
+ - POST -> DELETE -> GET -> check response
+
+ - PUT -> DELETE -> GET -> check response
 
